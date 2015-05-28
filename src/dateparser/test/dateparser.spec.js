@@ -173,4 +173,8 @@ describe('date parser', function () {
   it('should not parse if no format is specified', function() {
     expect(dateParser.parse('21.08.1951', '')).toBe('21.08.1951');
   });
+
+  it('should ignore invalid baseDate', function() {
+    expect(dateParser.parse('21.08.1951', 'dd.MM.yyyy', new Date('invalid'))).toEqual(new Date(1951, 7, 21));
+  });
 });
